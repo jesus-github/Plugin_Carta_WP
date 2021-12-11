@@ -1,0 +1,76 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/helpers/bootstrap/js/bootstrap.min.min.js" />
+        <item url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.js" />
+        <item url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.min.js" />
+        <item url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.js" />
+        <item url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-edit-420.min.js" />
+        <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-elementor-420.min.js" />
+        <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
+        <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
+        <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/admin/block-editor.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/admin/tinycolor.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/back-to-top.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/back-to-top.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/classList.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/classList.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/dropdown-click.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/dropdown-click.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/menu.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/menu.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/navigation-search.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/navigation-search.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/customizer-controls.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/customizer-live-preview.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/postMessage.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/selectWoo.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/slider-control.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/typography-customizer.min.js" />
+        <item url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/upsell-control.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/helpers/bootstrap/js/bootstrap.min.min.js" />
+      <root url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.js" />
+      <root url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.min.js" />
+      <root url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.js" />
+      <root url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-edit-420.min.js" />
+      <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-elementor-420.min.js" />
+      <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
+      <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
+      <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/admin/block-editor.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/admin/tinycolor.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/back-to-top.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/back-to-top.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/classList.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/classList.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/dropdown-click.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/dropdown-click.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/menu.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/menu.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/navigation-search.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/js/navigation-search.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/customizer-controls.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/customizer-live-preview.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/postMessage.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/selectWoo.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/slider-control.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/typography-customizer.min.js" />
+      <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/upsell-control.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
