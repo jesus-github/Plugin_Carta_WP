@@ -65,8 +65,6 @@ if (!function_exists('jmd_enqueue_styles_front')) {
 			$version_plugin,
 			true
 		);
-
-
 	}
 	add_action('wp_enqueue_scripts', 'jmd_enqueue_styles_front');
 }
@@ -95,19 +93,54 @@ if (!function_exists('jmd_deactivation')) {
 if (!function_exists('jmd_desinstall')) {
 	function jmd_desinstall() {
 		//Acciones a realizar antes de borrar todos los datos que se encuentran en la cartepa del plugin
-		require_once plugin_dir_path(__FILE__). 'includes/admin/remove.rol.carta.php';
 
+		// Quitamos las capabilities que habíamos dado al instalar el plugin
+		$capabilities = array(
+			'read_plato' => true,
+			'delete_plato' => true,
+			'edit_platos' => true,
+			'edit_others_platos' => true,
+			'publish_platos' => true,
+			'read_private_platos' => true,
+			'manage_seccion' => true,
+			'edit_seccion' => true,
+			'delete_seccion' => true,
+			'assign_seccion' => true,
+			'edit_plato' => true,
+			'manage_alergeno' => true,
+			'edit_alergeno' => true,
+			'delete_alergeno' => true,
+			'assign_alergeno' => true,
+		);
+
+		$role = get_role( 'administrator' );
+		foreach ( $capabilities as $key => $value ) {
+			$role->remove_cap($key);
+		}
+
+		$role = get_role( 'editor' );
+		foreach ( $capabilities as $key => $value ) {
+			$role->remove_cap($key);
+		}
+
+		// Borramos el rol carta
+		$wp_roles = new WP_Roles();
+		$wp_roles->remove_role("carta");
 	}
 }
 
-// Seteamos el hook de activación para el plugin
+// Seteamos el hook de activación para el plugin. Le indicamos la función que se ejecuta cuando pulsemos el botón de activar plugin
 register_activation_hook(__FILE__, 'jmd_install');
-// Seteamos el hook de activación para el plugin
+// Seteamos el hook de desactivación para el plugin. Le indicamos la función que se ejecuta cuando pulsemos el botón de desactivar plugin
 register_deactivation_hook(__FILE__, 'jmd_deactivation');
-// Seteamos el hook de activación para el plugin
+// Seteamos el hook de desinstalación para el plugin. Le indicamos la función que se ejecuta cuando pulsemos el botón de borrar plugin
 register_uninstall_hook(__FILE__, 'jmd_desinstall');
 
 /* Incluimos archivos */
 include plugin_dir_path(__FILE__) . 'includes/admin/functions.php';
 //include plugin_dir_path(__FILE__) . 'includes/public/functions.php';
 include plugin_dir_path(__FILE__) . 'includes/schema/functions.php';
+
+$wp_roles = new WP_Roles();
+$names = $wp_roles->get_names();
+error_log( print_r( $names, true)  );
