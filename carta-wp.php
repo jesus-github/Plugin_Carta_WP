@@ -140,7 +140,3 @@ register_uninstall_hook(__FILE__, 'jmd_desinstall');
 include plugin_dir_path(__FILE__) . 'includes/admin/functions.php';
 //include plugin_dir_path(__FILE__) . 'includes/public/functions.php';
 include plugin_dir_path(__FILE__) . 'includes/schema/functions.php';
-
-$wp_roles = new WP_Roles();
-$names = $wp_roles->get_names();
-error_log( print_r( $names, true)  );
