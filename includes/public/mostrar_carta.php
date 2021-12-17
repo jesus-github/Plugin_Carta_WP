@@ -75,7 +75,7 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
 	        $terms = get_the_terms( $post->ID, 'seccion' );
 	        // Para cada término
 	        foreach ( $terms as $term ) {
-		        echo strtolower( "$term->name " );
+		        echo( $term->slug);
 	        } ?>">
                 <div class="cwp-mask"></div>
                 <div class="card shadow-sm h-100 p-0">

@@ -2,16 +2,17 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/helpers/bootstrap/js/bootstrap.min.min.js" />
         <item url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.js" />
-        <item url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.min.js" />
         <item url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.js" />
-        <item url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-edit-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-elementor-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
+        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.js" />
+        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.min.js" />
+        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.js" />
+        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />
@@ -37,16 +38,17 @@
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/helpers/bootstrap/js/bootstrap.min.min.js" />
       <root url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.js" />
-      <root url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.min.js" />
       <root url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.js" />
-      <root url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-edit-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-elementor-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
+      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.js" />
+      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.min.js" />
+      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.js" />
+      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />
