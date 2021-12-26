@@ -140,3 +140,4 @@ register_uninstall_hook(__FILE__, 'jmd_desinstall');
 include plugin_dir_path(__FILE__) . 'includes/admin/functions.php';
 //include plugin_dir_path(__FILE__) . 'includes/public/functions.php';
 include plugin_dir_path(__FILE__) . 'includes/schema/functions.php';
+include plugin_dir_path(__FILE__) . 'helpers/order/order.php';
