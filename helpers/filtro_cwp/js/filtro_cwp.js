@@ -14,7 +14,7 @@ if (typeof  jQuery == 'undefined') {
             this.options    = null;
             this.zoomfull       = '<!--  INICIO - Maquetación al pinchar sobre un item -->\n' +
                 '<div class="card shadow-lg cwp-zoom" id="">\n' +
-                '   <button type="button" class="btn-close btn-close-white btn-lg bg-light rounded-circle p-2" aria-label="Close"></button>\n' +
+                '   <button type="button" class="btn-close btn-close-white btn-lg bg-light p-2" aria-label="Close"></button>\n' +
                 '    <img src="" class="card-img-top cwp-main-image" alt="...">\n' +
                 '    <div class="card-body">\n' +
                 '        <h3 class="card-title cwp-title"></h3>\n' +
