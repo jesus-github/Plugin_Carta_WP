@@ -49,7 +49,7 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
 
 
         <!-- COMIENZO de la maquetación del contenedor con todos los platos -->
-        <div class="row cwp-container">
+        <div class="container p-0 cwp-container">
 
             <!-- LOOP Comienzo de la maquetación de cada plato-->
             <?php
@@ -90,9 +90,9 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                             //echo implode(' ',$post_terms);
                             ?>
                             <div class="col-md-6 mt-2 cwp-single-container"  role="button" >
-                                <div class="cwp-mask"></div>
+                                <div class="card cwp-mask"></div>
                                 <div class="card shadow-sm h-100 p-0">
-                                    <div class="row g-0">
+                                    <div class="row g-0 h-100">
                                         <!-- Si no hay imagen no mostramos su contenedor-->
                                         <?php if ( has_post_thumbnail( $post->ID ) ): ?>
                                         <div class="col-4">
