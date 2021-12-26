@@ -34,7 +34,7 @@ if (typeof  jQuery == 'undefined') {
     // Valores por defecto
     TJ_CartaWp.Defaults = {
         filter : '.cwp-categorias li', // selector de los filtros
-        item : '.cwp-item', // selector  los item a filtrar (clase que tendrá el contenedor de cada plato)
+        item : '.seccion', // selector  los item a filtrar (clase que tendrá el contenedor de cada plato)
         animation : 'none',
         callback : null
     }
@@ -50,11 +50,12 @@ if (typeof  jQuery == 'undefined') {
         // Añadimos el html de la máscara y el zoom al final de body (las hemos declarado como propiedades al crear el objeto TJ_CartaWp)
         $('body').prepend(this.zoomfull).prepend(this.overdark);
 
-        // Inicializamos el métido para hacer zoom
+        // Inicializamos el método para hacer zoom
         this.zoom();
 
         // Aplicamos la clase cwp-item a cada contenedor de plato
-        this.$element.children().addClass(this.options.item.replace('.',''));
+        //this.$element.children().addClass(this.options.item.replace('.',''));
+        this.$element.find('.seccion').addClass(this.options.item.replace('.',''));
 
         // Validamos los métodos callback
         if (typeof callback == 'function'){
@@ -84,7 +85,6 @@ if (typeof  jQuery == 'undefined') {
             setTimeout(function() {
                 // Una vez seleccionada la categoría cerramos el menú hamburguesa
                 $('.navbar-collapse').removeClass('show');
-                $('.navbar-brand').html($('.cwp-categoria-activa').text());
             }, 10);
 
             // Variable para almacenar el elemento sobre el que hacemos click

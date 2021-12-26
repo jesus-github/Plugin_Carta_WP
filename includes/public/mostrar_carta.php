@@ -74,6 +74,7 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                 if ( $query->have_posts() ) :
                 // Escribimos en la cabecera el nombre del término
                     ?>
+                    <section class="row seccion" data-f="<?php echo $term->slug ?>">
                         <h3 class="h5 px-3 py-2 mt-4 bg-dark text-white shadow-sm rounded"><?php echo $term->name ?></h3>
                     <?php
                 // Mientras que haya posts
@@ -88,7 +89,7 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                             //echo '<h6>'.the_title().'</h6>';
                             //echo implode(' ',$post_terms);
                             ?>
-                            <div class="col-md-6 mt-2 cwp-single-container"  role="button" data-f="<?php echo implode(' ',$post_terms) ?>">
+                            <div class="col-md-6 mt-2 cwp-single-container"  role="button" >
                                 <div class="cwp-mask"></div>
                                 <div class="card shadow-sm h-100 p-0">
                                     <div class="row g-0">
@@ -132,6 +133,7 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                             <?php
                         }
                     endwhile;
+                        echo '</section>';
                 else:
                     echo "<h2>No hay ningún plato en la carta</h2>";
                 endif;
