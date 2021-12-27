@@ -126,6 +126,33 @@ if (!function_exists('jmd_desinstall')) {
 		// Borramos el rol carta
 		$wp_roles = new WP_Roles();
 		$wp_roles->remove_role("carta");
+
+		/**
+		 * JMD Order Uninstall
+		 */
+
+		global $wpdb;
+		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+			$curr_blog = $wpdb->blogid;
+			$blogids   = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
+			foreach ( $blogids as $blog_id ) {
+				switch_to_blog( $blog_id );
+				jmdorder_uninstall_db();
+			}
+			switch_to_blog( $curr_blog );
+		} else {
+			jmdorder_uninstall_db();
+		}
+
+		function jmdorder_uninstall_db() {
+			global $wpdb;
+			$result = $wpdb->query( "DESCRIBE $wpdb->terms `term_order`" );
+			if ( $result ) {
+				$query  = "ALTER TABLE $wpdb->terms DROP `term_order`";
+				$result = $wpdb->query( $query );
+			}
+			delete_option( 'jmdorder_install' );
+		}
 	}
 }
 

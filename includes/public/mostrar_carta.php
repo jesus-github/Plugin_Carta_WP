@@ -89,7 +89,7 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                             //echo '<h6>'.the_title().'</h6>';
                             //echo implode(' ',$post_terms);
                             ?>
-                            <div class="col-md-6 mt-2 cwp-single-container"  role="button" >
+                            <div class="col-md-6 mt-2 cwp-single-container"  role="button" data-bs-toggle="modal" data-bs-target="#cwpModal">
                                 <div class="card cwp-mask"></div>
                                 <div class="card shadow-sm h-100 p-0">
                                     <div class="row g-0 h-100">

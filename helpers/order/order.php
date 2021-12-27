@@ -2,22 +2,22 @@
 /**
  * Permite ordenar desde el admin de wordpress los posts y taxonomias
  *
- * Podemos indicarle que post ordenar en la función get_scporder_options_objects()
- * Podemos indicarle que taxonomías ordenar en la función get_scporder_options_tags()
+ * Podemos indicarle que post ordenar en la función get_jmdorder_options_objects()
+ * Podemos indicarle que taxonomías ordenar en la función get_jmdorder_options_tags()
  *
  */
 
-define( 'SCPORDER_URL', plugins_url( '', __FILE__ ) );
-define( 'SCPORDER_DIR', plugin_dir_path( __FILE__ ) );
-define( 'SCPORDER_VERSION', '2.5.6' );
+define( 'JMDORDER_URL', plugins_url( '', __FILE__ ) );
+define( 'JMDORDER_DIR', plugin_dir_path( __FILE__ ) );
+define( 'JMDORDER_VERSION', '2.5.6' );
 
-$scporder = new SCPO_Engine();
+$jmdorder = new JMDO_Engine();
 
-class SCPO_Engine {
+class JMDO_Engine {
 
 	function __construct() {
-		if ( ! get_option( 'scporder_install' ) ) {
-			$this->scporder_install();
+		if ( ! get_option( 'jmdorder_install' ) ) {
+			$this->jmdorder_install();
 		}
 
 		add_action( 'admin_init', array( $this, 'refresh' ) );
@@ -27,42 +27,42 @@ class SCPO_Engine {
 		add_action( 'wp_ajax_update-menu-order', array( $this, 'update_menu_order' ) );
 		add_action( 'wp_ajax_update-menu-order-tags', array( $this, 'update_menu_order_tags' ) );
 
-		add_action( 'pre_get_posts', array( $this, 'scporder_pre_get_posts' ) );
+		add_action( 'pre_get_posts', array( $this, 'jmdorder_pre_get_posts' ) );
 
-		add_filter( 'get_previous_post_where', array( $this, 'scporder_previous_post_where' ) );
-		add_filter( 'get_previous_post_sort', array( $this, 'scporder_previous_post_sort' ) );
-		add_filter( 'get_next_post_where', array( $this, 'scporder_next_post_where' ) );
-		add_filter( 'get_next_post_sort', array( $this, 'scporder_next_post_sort' ) );
+		add_filter( 'get_previous_post_where', array( $this, 'jmdorder_previous_post_where' ) );
+		add_filter( 'get_previous_post_sort', array( $this, 'jmdorder_previous_post_sort' ) );
+		add_filter( 'get_next_post_where', array( $this, 'jmdorder_next_post_where' ) );
+		add_filter( 'get_next_post_sort', array( $this, 'jmdorder_next_post_sort' ) );
 
-		add_filter( 'get_terms_orderby', array( $this, 'scporder_get_terms_orderby' ), 10, 3 );
-		add_filter( 'wp_get_object_terms', array( $this, 'scporder_get_object_terms' ), 10, 3 );
-		add_filter( 'get_terms', array( $this, 'scporder_get_object_terms' ), 10, 3 );
+		add_filter( 'get_terms_orderby', array( $this, 'jmdorder_get_terms_orderby' ), 10, 3 );
+		add_filter( 'wp_get_object_terms', array( $this, 'jmdorder_get_object_terms' ), 10, 3 );
+		add_filter( 'get_terms', array( $this, 'jmdorder_get_object_terms' ), 10, 3 );
 
-        add_action( 'wp_ajax_scporder_dismiss_notices', array( $this, 'dismiss_notices' ) );
+        add_action( 'wp_ajax_jmdorder_dismiss_notices', array( $this, 'dismiss_notices' ) );
 
-		add_action( 'wp_ajax_scpo_reset_order', array( $this, 'scpo_ajax_reset_order' ) );
+		add_action( 'wp_ajax_jmdo_reset_order', array( $this, 'jmdo_ajax_reset_order' ) );
 	}
 
 	public function dismiss_notices() {
 
-		if ( ! check_admin_referer( 'scporder_dismiss_notice', 'scporder_nonce' ) ) {
+		if ( ! check_admin_referer( 'jmdorder_dismiss_notice', 'jmdorder_nonce' ) ) {
 			wp_die( 'nok' );
 		}
 
-		update_option( 'scporder_notice', '1' );
+		update_option( 'jmdorder_notice', '1' );
 
 		wp_die( 'ok' );
 
 	}
 
-	public function scporder_install() {
+	public function jmdorder_install() {
 		global $wpdb;
 		$result = $wpdb->query( "DESCRIBE $wpdb->terms `term_order`" );
 		if ( ! $result ) {
 			$query  = "ALTER TABLE $wpdb->terms ADD `term_order` INT( 4 ) NULL DEFAULT '0'";
 			$result = $wpdb->query( $query );
 		}
-		update_option( 'scporder_install', 1 );
+		update_option( 'jmdorder_install', 1 );
 	}
 
 
@@ -70,8 +70,8 @@ class SCPO_Engine {
 
 		$active = false;
 
-		$objects = $this->get_scporder_options_objects();
-		$tags    = $this->get_scporder_options_tags();
+		$objects = $this->get_jmdorder_options_objects();
+		$tags    = $this->get_jmdorder_options_tags();
 
 		if ( empty( $objects ) && empty( $tags ) ) {
 			return false;
@@ -103,21 +103,21 @@ class SCPO_Engine {
 		if ( $this->_check_load_script_css() ) {
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'jquery-ui-sortable' );
-			wp_enqueue_script( 'scporderjs', SCPORDER_URL . '/assets/scporder.min.js', array( 'jquery' ), SCPORDER_VERSION, true );
-			add_action( 'admin_print_styles', array( $this, 'print_scpo_style' ) );
+			wp_enqueue_script( 'jmdorderjs', JMDORDER_URL . '/assets/jmdorder.min.js', array( 'jquery' ), JMDORDER_VERSION, true );
+			add_action( 'admin_print_styles', array( $this, 'print_jmdo_style' ) );
 
 		}
 	}
 
 	public function refresh() {
 
-		if ( scporder_doing_ajax() ) {
+		if ( jmdorder_doing_ajax() ) {
 			return;
 		}
 
 		global $wpdb;
-		$objects = $this->get_scporder_options_objects();
-		$tags    = $this->get_scporder_options_tags();
+		$objects = $this->get_jmdorder_options_objects();
+		$tags    = $this->get_jmdorder_options_tags();
 
 		if ( ! empty( $objects ) ) {
 
@@ -213,7 +213,7 @@ class SCPO_Engine {
 			}
 		}
 
-		do_action( 'scp_update_menu_order' );
+		do_action( 'jmd_update_menu_order' );
 
 	}
 
@@ -248,16 +248,16 @@ class SCPO_Engine {
 			}
 		}
 
-		do_action( 'scp_update_menu_order_tags' );
+		do_action( 'jmd_update_menu_order_tags' );
 
 	}
 
 
 
-	public function scporder_previous_post_where( $where ) {
+	public function jmdorder_previous_post_where( $where ) {
 		global $post;
 
-		$objects = $this->get_scporder_options_objects();
+		$objects = $this->get_jmdorder_options_objects();
 		if ( empty( $objects ) ) {
 			return $where;
 		}
@@ -268,10 +268,10 @@ class SCPO_Engine {
 		return $where;
 	}
 
-	public function scporder_previous_post_sort( $orderby ) {
+	public function jmdorder_previous_post_sort( $orderby ) {
 		global $post;
 
-		$objects = $this->get_scporder_options_objects();
+		$objects = $this->get_jmdorder_options_objects();
 		if ( empty( $objects ) ) {
 			return $orderby;
 		}
@@ -282,10 +282,10 @@ class SCPO_Engine {
 		return $orderby;
 	}
 
-	public function scporder_next_post_where( $where ) {
+	public function jmdorder_next_post_where( $where ) {
 		global $post;
 
-		$objects = $this->get_scporder_options_objects();
+		$objects = $this->get_jmdorder_options_objects();
 		if ( empty( $objects ) ) {
 			return $where;
 		}
@@ -296,10 +296,10 @@ class SCPO_Engine {
 		return $where;
 	}
 
-	public function scporder_next_post_sort( $orderby ) {
+	public function jmdorder_next_post_sort( $orderby ) {
 		global $post;
 
-		$objects = $this->get_scporder_options_objects();
+		$objects = $this->get_jmdorder_options_objects();
 		if ( empty( $objects ) ) {
 			return $orderby;
 		}
@@ -310,8 +310,8 @@ class SCPO_Engine {
 		return $orderby;
 	}
 
-	public function scporder_pre_get_posts( $wp_query ) {
-		$objects = $this->get_scporder_options_objects();
+	public function jmdorder_pre_get_posts( $wp_query ) {
+		$objects = $this->get_jmdorder_options_objects();
 
 		if ( empty( $objects ) ) {
 			return false;
@@ -368,13 +368,13 @@ class SCPO_Engine {
 		}
 	}
 
-	public function scporder_get_terms_orderby( $orderby, $args ) {
+	public function jmdorder_get_terms_orderby( $orderby, $args ) {
 
 		if ( is_admin() && ! wp_doing_ajax() ) {
 			return $orderby;
 		}
 
-		$tags = $this->get_scporder_options_tags();
+		$tags = $this->get_jmdorder_options_tags();
 
 		if ( ! isset( $args['taxonomy'] ) ) {
 			return $orderby;
@@ -398,8 +398,8 @@ class SCPO_Engine {
 		return $orderby;
 	}
 
-	public function scporder_get_object_terms( $terms ) {
-		$tags = $this->get_scporder_options_tags();
+	public function jmdorder_get_object_terms( $terms ) {
+		$tags = $this->get_jmdorder_options_tags();
 
 		if ( is_admin() && ! wp_doing_ajax() && isset( $_GET['orderby'] ) ) {
 			return $terms;
@@ -430,7 +430,7 @@ class SCPO_Engine {
 	/**
 	 * Incluimos los CPT que vamos a querer ordenar
 	 */
-	public function get_scporder_options_objects() {
+	public function get_jmdorder_options_objects() {
 		$objects = array('platos');
 		return $objects;
 	}
@@ -438,20 +438,20 @@ class SCPO_Engine {
 	/**
 	 * Incluimos las taxonomías que vamos a querer ordenar
 	 */
-	public function get_scporder_options_tags() {
+	public function get_jmdorder_options_tags() {
 		$tags = array('seccion');
 		return $tags;
 	}
 
 
 	/**
-	 *  SCPO reset order for post types/taxonomies
+	 *  JMDO reset order for post types/taxonomies
 	 */
-	public function scpo_ajax_reset_order() {
+	public function jmdo_ajax_reset_order() {
 
 		global $wpdb;
-		if ( 'scpo_reset_order' == $_POST['action'] ) {
-			check_ajax_referer( 'scpo-reset-order', 'scpo_security' );
+		if ( 'jmdo_reset_order' == $_POST['action'] ) {
+			check_ajax_referer( 'jmdo-reset-order', 'jmdo_security' );
 			$items = $_POST['items'];
 
 			$count   = 0;
@@ -470,12 +470,12 @@ class SCPO_Engine {
 
 			$result = $wpdb->query( $prep_posts_query );
 
-			$scpo_options = get_option( 'scporder_options' );
+			$jmdo_options = get_option( 'jmdorder_options' );
 
-			if ( ! false == $scpo_options ) {
+			if ( ! false == $jmdo_options ) {
 
-				$scpo_options['objects'] = array_diff( $scpo_options['objects'], $items );
-				update_option( 'scporder_options', $scpo_options );
+				$jmdo_options['objects'] = array_diff( $jmdo_options['objects'], $items );
+				update_option( 'jmdorder_options', $jmdo_options );
 			}
 
 			if ( $result ) {
@@ -493,7 +493,7 @@ class SCPO_Engine {
 	 *
 	 * @since 2.5.4
 	 */
-	public function print_scpo_style() {
+	public function print_jmdo_style() {
 		?>
 		<style>
 			.ui-sortable tr:hover {
@@ -514,7 +514,7 @@ class SCPO_Engine {
 
 }
 
-function scporder_doing_ajax() {
+function jmdorder_doing_ajax() {
 
 	if ( function_exists( 'wp_doing_ajax' ) ) {
 		return wp_doing_ajax();
@@ -528,33 +528,33 @@ function scporder_doing_ajax() {
 
 }
 
-/**
- * SCP Order Uninstall hook
- */
-register_uninstall_hook( __FILE__, 'scporder_uninstall' );
-
-function scporder_uninstall() {
-	global $wpdb;
-	if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-		$curr_blog = $wpdb->blogid;
-		$blogids   = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
-		foreach ( $blogids as $blog_id ) {
-			switch_to_blog( $blog_id );
-			scporder_uninstall_db();
-		}
-		switch_to_blog( $curr_blog );
-	} else {
-		scporder_uninstall_db();
-	}
-}
-
-function scporder_uninstall_db() {
-	global $wpdb;
-	$result = $wpdb->query( "DESCRIBE $wpdb->terms `term_order`" );
-	if ( $result ) {
-		$query  = "ALTER TABLE $wpdb->terms DROP `term_order`";
-		$result = $wpdb->query( $query );
-	}
-	delete_option( 'scporder_install' );
-}
+///**
+// * JMD Order Uninstall hook
+// */
+//register_uninstall_hook( __FILE__, 'jmdorder_uninstall' );
+//
+//function jmdorder_uninstall() {
+//	global $wpdb;
+//	if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+//		$curr_blog = $wpdb->blogid;
+//		$blogids   = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
+//		foreach ( $blogids as $blog_id ) {
+//			switch_to_blog( $blog_id );
+//			jmdorder_uninstall_db();
+//		}
+//		switch_to_blog( $curr_blog );
+//	} else {
+//		jmdorder_uninstall_db();
+//	}
+//}
+//
+//function jmdorder_uninstall_db() {
+//	global $wpdb;
+//	$result = $wpdb->query( "DESCRIBE $wpdb->terms `term_order`" );
+//	if ( $result ) {
+//		$query  = "ALTER TABLE $wpdb->terms DROP `term_order`";
+//		$result = $wpdb->query( $query );
+//	}
+//	delete_option( 'jmdorder_install' );
+//}
 

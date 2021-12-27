@@ -3,22 +3,13 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.js" />
-        <item url="file://$PROJECT_DIR$/helpers/simple-custom-post-order/assets/scporder.min.js" />
-        <item url="file://$PROJECT_DIR$/helpers/simple-custom-post-order/assets/scporder.min.min.js" />
-        <item url="file://$PROJECT_DIR$/helpers/simple-custom-post-order/assets/scporder.min.min.min.js" />
-        <item url="file://$PROJECT_DIR$/helpers/simple-custom-post-order/assets/taxonomy_order.min.js" />
-        <item url="file://$PROJECT_DIR$/helpers/simple-custom-post-order/assets/taxonomy_order.min.min.js" />
-        <item url="file://$PROJECT_DIR$/helpers/simple-custom-post-order/assets/taxonomy_order.min.min.min.js" />
+        <item url="file://$PROJECT_DIR$/helpers/order/assets/jmdorder.min.js" />
         <item url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-edit-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-elementor-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
-        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.js" />
-        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.min.js" />
-        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.js" />
-        <item url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />
@@ -45,16 +36,13 @@
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/helpers/filtro_cwp/js/filtro_cwp.min.js" />
+      <root url="file://$PROJECT_DIR$/helpers/order/assets/jmdorder.min.js" />
       <root url="file://$PROJECT_DIR$/includes/public/js/carta_wp-public.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-edit-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-elementor-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
-      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.js" />
-      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/scporder.min.min.js" />
-      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.js" />
-      <root url="file://$PROJECT_DIR$/../simple-custom-post-order/assets/taxonomy_order.min.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />
@@ -77,12 +65,6 @@
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/slider-control.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/typography-customizer.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/inc/customizer/controls/js/upsell-control.min.js" />
-      <root url="file://$PROJECT_DIR$/helpers/order/assets/taxonomy_order.min.min.min.js" />
-      <root url="file://$PROJECT_DIR$/helpers/order/assets/scporder.min.min.js" />
-      <root url="file://$PROJECT_DIR$/helpers/order/assets/taxonomy_order.min.min.js" />
-      <root url="file://$PROJECT_DIR$/helpers/order/assets/scporder.min.min.min.js" />
-      <root url="file://$PROJECT_DIR$/helpers/order/assets/taxonomy_order.min.js" />
-      <root url="file://$PROJECT_DIR$/helpers/order/assets/scporder.min.js" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
