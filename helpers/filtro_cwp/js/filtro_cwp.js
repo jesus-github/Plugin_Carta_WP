@@ -8,47 +8,24 @@ if (typeof  jQuery == 'undefined') {
     'use strict';
     /********** Funcionalidad de filtrado *********/
 
-    // Creamos un objeto (nombramos la variable empezando con mayúsculas)
-    // var TJ_CartaWp = function (element, options, callback) {
-    //         this.element    = null;
-    //         this.options    = null;
-    //         this.zoomfull       = '<!--  INICIO - Maquetación al pinchar sobre un item -->\n' +
-    //             '<div class="card shadow-lg cwp-zoom" id="">\n' +
-    //             '   <button type="button" class="btn-close btn-close-white btn-lg bg-light p-2" aria-label="Close"></button>\n' +
-    //             '    <img src="" class="card-img-top cwp-main-image" alt="...">\n' +
-    //             '    <div class="card-body">\n' +
-    //             '        <h3 class="card-title cwp-title"></h3>\n' +
-    //             '        <p class="card-text text-secondary m-1 cwp-description"></p>\n' +
-    //             '        <h6 class="card-text cwp-price mt-3"></h6>\n' +
-    //             '        <ul class="list-inline m-0 cwp-alergenos">\n' +
-    //             // '            <li class="list-inline-item"><img src="" alt=""></li>\n' +
-    //             '        </ul>\n' +
-    //             '    </div>\n' +
-    //             '</div>\n' +
-    //             '<!--  FIN - Maquetación al pinchar sobre un item -->';
-    //         this.overdark   =   '<div class="cwp-fondo-zoom"></div>'; // Máscara negra al hace zoom
-    //
-    //         this.init(element, options, callback);
-    //     };
-
     var TJ_CartaWp = function (element, options, callback) {
         this.element    = null;
         this.options    = null;
         this.zoomfull       = '<!--  INICIO - Maquetación al pinchar sobre un item -->\n' +
             '<div class="modal fade" id="cwpModal" tabindex="-1" aria-hidden="true">\n' +
             '   <div class="modal-dialog modal-dialog-centered">\n' +
-            '       <div class="modal-content cwp-zoom">\n' +
-            '           <div class="modal-header">\n' +
+            '       <div class="modal-content cwp-zoom shadow-lg border-0">\n' +
+            '           <div class="modal-header bg-dark text-white border-0">\n' +
             '               <h3 class="modal-title card-title cwp-title" ></h3>\n' +
-            '               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+            '               <button type="button" class="btn-lg btn-close btn-close-white bg-transparent align-self-start ms-4" aria-label="Close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
             '           </div>\n' +
             '           <div class="modal-body p-0">\n' +
             '               <img src="" class="cwp-main-image" alt="...">\n' +
             '           </div>\n' +
-            '           <div class="modal-footer">\n' +
-            '               <p class="card-text text-secondary m-1 cwp-description"></p>\n' +
+            '           <div class="modal-footer justify-content-start">\n' +
+            '               <p class="card-text text-secondary mb-2 cwp-description"></p>\n' +
             '               <div class="w-100 d-flex justify-content-between">\n' +
-            '                   <h6 class="card-text cwp-price m-1"></h6>\n' +
+            '                   <h5 class="card-text cwp-price m-1 align-self-center"></h5>\n' +
             '                   <ul class="list-inline cwp-alergenos m-1">\n' +
             '                   </ul>\n' +
             '               </div>\n' +
@@ -57,7 +34,6 @@ if (typeof  jQuery == 'undefined') {
         '       </div>\n' +
             '</div>\n' +
             '<!--  FIN - Maquetación al pinchar sobre un item -->';
-        this.overdark   =   '<div class="cwp-fondo-zoom"></div>'; // Máscara negra al hace zoom
 
         this.init(element, options, callback);
     };
@@ -78,8 +54,8 @@ if (typeof  jQuery == 'undefined') {
         // Llamamos al método filtro pasándole las options
         this.filtro(this.options);
 
-        // Añadimos el html de la máscara y el zoom al final de body (las hemos declarado como propiedades al crear el objeto TJ_CartaWp)
-        $('body').prepend(this.zoomfull).prepend(this.overdark);
+        // Añadimos el html del zoom al final de body (las hemos declarado como propiedades al crear el objeto TJ_CartaWp)
+        $('body').prepend(this.zoomfull);
 
         // Inicializamos el método para hacer zoom
         this.zoom();
@@ -148,8 +124,6 @@ if (typeof  jQuery == 'undefined') {
 
     // Método para hacer Zoom al pinchar sobre un plato
     TJ_CartaWp.prototype.zoom = function () {
-        // variable con la máscara negra
-        var $overdark = $('.cwp-fondo-zoom');
         // variable con el contenedor que va a contener todo cuando hagamos zoom
         var $contenedor_zoom = $('.cwp-zoom');
         // Variables con los datos para pasarlos del contenedor pequeño al contenedor grande (cuando hacemos zoom
@@ -177,9 +151,7 @@ if (typeof  jQuery == 'undefined') {
             // $alergenos
             var $alergenos = $contenedor_pequeno.find('.cwp-alerg-icon');
 
-            // Parámetro para mostrar el zoom y el overdark
-            $contenedor_zoom.fadeIn();
-            $overdark.fadeIn();
+
 
             // Pasamos los valores del contenedor chico al grande
             // Controlamos que si no hay imagen no se muestre el contenedor de la imagen
@@ -205,14 +177,6 @@ if (typeof  jQuery == 'undefined') {
             $contenedor_zoom.find('ul.cwp-alergenos').html('');
         })
 
-        // // Tras aparecer el overdark y el contenedor zoom vamos a ocultarlos cuando hagamos click sobre cualquiera de ellos
-        // $.merge($overdark,$contenedor_zoom).on('click', function (){
-        //     $overdark.fadeOut();
-        //     $contenedor_zoom.fadeOut();
-        //     // Borramos los alergenos del DOM para que no aparezcan en el siguiente click
-        //     $contenedor_zoom.find('ul.cwp-alergenos').html('');
-        //
-        // })
     }
 
     // Añadimos leer más para no mostrar toda la descripción
