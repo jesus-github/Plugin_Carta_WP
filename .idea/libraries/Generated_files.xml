@@ -10,6 +10,7 @@
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
         <item url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
+        <item url="file://$PROJECT_DIR$/../query-monitor/assets/query-monitor.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
         <item url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />
@@ -43,6 +44,7 @@
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-options-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-quick-edit-420.min.js" />
       <root url="file://$PROJECT_DIR$/../duplicate-post/js/dist/duplicate-post-strings-420.min.js" />
+      <root url="file://$PROJECT_DIR$/../query-monitor/assets/query-monitor.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/block-editor.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/customizer.min.js" />
       <root url="file://$PROJECT_DIR$/../../themes/generatepress/assets/dist/dashboard.min.js" />

@@ -139,7 +139,7 @@ jmd_hide_taxonomy_parent( 'seccion');
 class Jmd_add_alergeno_imagen{
 	private $meta_fields = array(
 		array(
-			'label' => 'Icono',
+			'label' => 'Icono (tamaño recomendado 30x42 px)',
 			'id' => 'alergeno-imagen',
 			'type' => 'media',
 		)
@@ -209,7 +209,7 @@ class Jmd_add_alergeno_imagen{
 						$meta_url = wp_get_attachment_url($meta_value);
 					}
 					$input = sprintf(
-						'<input style="display:none;" id="%s" name="%s" type="text" value="%s"><div id="preview%s" style="margin-right:10px;border:2px solid #eee;display:inline-block;width: 100px;height:100px;background-image:url(%s);background-size:contain;background-repeat:no-repeat;"></div><input style="width: 19%%;margin-right:5px;" class="button taxokey-media" id="%s_button" name="%s_button" type="button" value="Select" /><input style="width: 19%%;" class="button remove-media" id="%s_buttonremove" name="%s_buttonremove" type="button" value="Clear" />',
+						'<input style="display:none;" id="%s" name="%s" type="text" value="%s"><div id="preview%s" style="margin-right:10px;border:2px solid #eee;display:inline-block;width: 100px;height:100px;background-image:url(%s);background-size:contain;background-repeat:no-repeat;"></div><input style="width: 22%%;margin:10px;" class="button taxokey-media" id="%s_button" name="%s_button" type="button" value="Seleccionar..." /><input style="margin:10px;width: 19%%;" class="button remove-media" id="%s_buttonremove" name="%s_buttonremove" type="button" value="Eliminar" />',
 						$meta_field['id'],
 						$meta_field['id'],
 						$meta_value,
@@ -248,7 +248,7 @@ class Jmd_add_alergeno_imagen{
 						$meta_url = wp_get_attachment_url($meta_value);
 					}
 					$input = sprintf(
-						'<input style="display:none;" id="%s" name="%s" type="text" value="%s"><div id="preview%s" style="margin-right:10px;border:2px solid #eee;display:inline-block;width: 100px;height:100px;background-image:url(%s);background-size:contain;background-repeat:no-repeat;"></div><input style="width: 19%%;margin-right:5px;" class="button taxokey-media" id="%s_button" name="%s_button" type="button" value="Select" /><input style="width: 19%%;" class="button remove-media" id="%s_buttonremove" name="%s_buttonremove" type="button" value="Clear" />',
+						'<input style="display:none;" id="%s" name="%s" type="text" value="%s"><div id="preview%s" style="margin-right:10px;border:2px solid #eee;display:inline-block;width: 100px;height:100px;background-image:url(%s);background-size:contain;background-repeat:no-repeat;"></div><input style="width: 19%%;margin-right:5px;" class="button taxokey-media" id="%s_button" name="%s_button" type="button" value="Seleccionar..." /><input style="width: 19%%;" class="button remove-media" id="%s_buttonremove" name="%s_buttonremove" type="button" value="Eliminar" />',
 						$meta_field['id'],
 						$meta_field['id'],
 						$meta_value,

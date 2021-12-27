@@ -1,4 +1,4 @@
-/* Validdamos que el objeto global jQuery no sea indefinido o no exista */
+/* Validamos que el objeto global jQuery no sea indefinido o no exista */
 if (typeof  jQuery == 'undefined') {
     throw new Error('El plugin carta_wp necesita la librería jQuery para funcionar.');
 }
@@ -150,8 +150,7 @@ if (typeof  jQuery == 'undefined') {
             var $precio = $contenedor_pequeno.find('.cwp-price').text();
             // $alergenos
             var $alergenos = $contenedor_pequeno.find('.cwp-alerg-icon');
-
-
+            var $alergenos_sin_icono = $contenedor_pequeno.find('.cwp-alerg-sin-icon');
 
             // Pasamos los valores del contenedor chico al grande
             // Controlamos que si no hay imagen no se muestre el contenedor de la imagen
@@ -167,6 +166,11 @@ if (typeof  jQuery == 'undefined') {
             $contenedor_zoom.find('.cwp-price').text($precio);
             for (const $alergeno of $alergenos) {
                 $contenedor_zoom.find('ul.cwp-alergenos').append("<li class='list-inline-item'><img src="+$alergeno.currentSrc+ " alt='"+$alergeno.alt+"'></li>")
+            }
+            //console.log($alergenos_sin_icono);
+            for (const $alergeno_sin_icono of $alergenos_sin_icono) {
+                console.log($alergeno_sin_icono.innerText)
+                $contenedor_zoom.find('ul.cwp-alergenos').append("<li class='list-inline-item text-danger my-1 fs-6'>"+$alergeno_sin_icono.innerText+"</li>");
             }
 
         });
