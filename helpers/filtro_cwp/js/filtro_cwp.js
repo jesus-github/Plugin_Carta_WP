@@ -1,4 +1,4 @@
-/* Validdamos que el objeto global jQuery no sea indefinido o no exista */
+/* Validamos que el objeto global jQuery no sea indefinido o no exista */
 if (typeof  jQuery == 'undefined') {
     throw new Error('El plugin carta_wp necesita la librería jQuery para funcionar.');
 }
@@ -8,28 +8,35 @@ if (typeof  jQuery == 'undefined') {
     'use strict';
     /********** Funcionalidad de filtrado *********/
 
-    // Creamos un objeto (nombramos la variable empezando con mayúsculas)
     var TJ_CartaWp = function (element, options, callback) {
-            this.element    = null;
-            this.options    = null;
-            this.zoomfull       = '<!--  INICIO - Maquetación al pinchar sobre un item -->\n' +
-                '<div class="card shadow-lg cwp-zoom" id="">\n' +
-                '   <button type="button" class="btn-close btn-close-white btn-lg bg-light p-2" aria-label="Close"></button>\n' +
-                '    <img src="" class="card-img-top cwp-main-image" alt="...">\n' +
-                '    <div class="card-body">\n' +
-                '        <h3 class="card-title cwp-title"></h3>\n' +
-                '        <p class="card-text text-secondary m-1 cwp-description"></p>\n' +
-                '        <h6 class="card-text cwp-price mt-3"></h6>\n' +
-                '        <ul class="list-inline m-0 cwp-alergenos">\n' +
-                // '            <li class="list-inline-item"><img src="" alt=""></li>\n' +
-                '        </ul>\n' +
-                '    </div>\n' +
-                '</div>\n' +
-                '<!--  FIN - Maquetación al pinchar sobre un item -->';
-            this.overdark   =   '<div class="cwp-fondo-zoom"></div>'; // Máscara negra al hace zoom
+        this.element    = null;
+        this.options    = null;
+        this.zoomfull       = '<!--  INICIO - Maquetación al pinchar sobre un item -->\n' +
+            '<div class="modal fade" id="cwpModal" tabindex="-1" aria-hidden="true">\n' +
+            '   <div class="modal-dialog modal-dialog-centered">\n' +
+            '       <div class="modal-content cwp-zoom shadow-lg border-0">\n' +
+            '           <div class="modal-header bg-dark text-white border-0">\n' +
+            '               <h3 class="modal-title card-title cwp-title" ></h3>\n' +
+            '               <button type="button" class="btn-lg btn-close btn-close-white bg-transparent align-self-start ms-4" aria-label="Close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
+            '           </div>\n' +
+            '           <div class="modal-body p-0">\n' +
+            '               <img src="" class="cwp-main-image" alt="...">\n' +
+            '           </div>\n' +
+            '           <div class="modal-footer justify-content-start">\n' +
+            '               <p class="card-text text-secondary mb-2 cwp-description"></p>\n' +
+            '               <div class="w-100 d-flex justify-content-between">\n' +
+            '                   <h5 class="card-text cwp-price m-1 align-self-center"></h5>\n' +
+            '                   <ul class="list-inline cwp-alergenos m-1">\n' +
+            '                   </ul>\n' +
+            '               </div>\n' +
+            '           </div>\n' +
+            '        </div>\n' +
+        '       </div>\n' +
+            '</div>\n' +
+            '<!--  FIN - Maquetación al pinchar sobre un item -->';
 
-            this.init(element, options, callback);
-        };
+        this.init(element, options, callback);
+    };
 
     // Valores por defecto
     TJ_CartaWp.Defaults = {
@@ -47,8 +54,8 @@ if (typeof  jQuery == 'undefined') {
         // Llamamos al método filtro pasándole las options
         this.filtro(this.options);
 
-        // Añadimos el html de la máscara y el zoom al final de body (las hemos declarado como propiedades al crear el objeto TJ_CartaWp)
-        $('body').prepend(this.zoomfull).prepend(this.overdark);
+        // Añadimos el html del zoom al final de body (las hemos declarado como propiedades al crear el objeto TJ_CartaWp)
+        $('body').prepend(this.zoomfull);
 
         // Inicializamos el método para hacer zoom
         this.zoom();
@@ -117,8 +124,6 @@ if (typeof  jQuery == 'undefined') {
 
     // Método para hacer Zoom al pinchar sobre un plato
     TJ_CartaWp.prototype.zoom = function () {
-        // variable con la máscara negra
-        var $overdark = $('.cwp-fondo-zoom');
         // variable con el contenedor que va a contener todo cuando hagamos zoom
         var $contenedor_zoom = $('.cwp-zoom');
         // Variables con los datos para pasarlos del contenedor pequeño al contenedor grande (cuando hacemos zoom
@@ -145,19 +150,16 @@ if (typeof  jQuery == 'undefined') {
             var $precio = $contenedor_pequeno.find('.cwp-price').text();
             // $alergenos
             var $alergenos = $contenedor_pequeno.find('.cwp-alerg-icon');
-
-            // Parámetro para mostrar el zoom y el overdark
-            $contenedor_zoom.fadeIn();
-            $overdark.fadeIn();
+            var $alergenos_sin_icono = $contenedor_pequeno.find('.cwp-alerg-sin-icon');
 
             // Pasamos los valores del contenedor chico al grande
             // Controlamos que si no hay imagen no se muestre el contenedor de la imagen
             if (typeof $src != 'undefined'){
-                $('.card-img-top').removeClass('d-none');
-                $contenedor_zoom.children('.cwp-main-image').attr('src', $src);
+                $('.modal-body').removeClass('d-none');
+                $contenedor_zoom.find('.cwp-main-image').attr('src', $src);
             } else if (typeof $src === 'undefined'){
-                $contenedor_zoom.children('.cwp-main-image').attr('src', '');
-                $('.card-img-top').addClass('d-none');
+                $contenedor_zoom.find('.cwp-main-image').attr('src', '');
+                $('.modal-body').addClass('d-none');
             }
             $contenedor_zoom.find('.card-title').text($titulo);
             $contenedor_zoom.find('.cwp-description').text($descripcion);
@@ -165,17 +167,20 @@ if (typeof  jQuery == 'undefined') {
             for (const $alergeno of $alergenos) {
                 $contenedor_zoom.find('ul.cwp-alergenos').append("<li class='list-inline-item'><img src="+$alergeno.currentSrc+ " alt='"+$alergeno.alt+"'></li>")
             }
+            //console.log($alergenos_sin_icono);
+            for (const $alergeno_sin_icono of $alergenos_sin_icono) {
+                console.log($alergeno_sin_icono.innerText)
+                $contenedor_zoom.find('ul.cwp-alergenos').append("<li class='list-inline-item my-1 badge bg-secondary'>"+$alergeno_sin_icono.innerText+"</li>");
+            }
 
         });
 
-        // Tras aparecer el overdark y el contenedor zoom vamos a ocultarlos cuando hagamos click sobre cualquiera de ellos
-        $.merge($overdark,$contenedor_zoom).on('click', function (){
-            $overdark.fadeOut();
-            $contenedor_zoom.fadeOut();
-            // Borramos los alergenos del DOM para que no aparezcan en el siguiente click
+        // Añadimos un eventlistener para que al cerrarse el modal se borren los alergenos del DOM para que no aparezcan en el siguiente click
+        var cwpModalEl = document.getElementById('cwpModal')
+        cwpModalEl.addEventListener('hidden.bs.modal', function (event) {
             $contenedor_zoom.find('ul.cwp-alergenos').html('');
-
         })
+
     }
 
     // Añadimos leer más para no mostrar toda la descripción

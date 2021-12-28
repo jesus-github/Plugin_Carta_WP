@@ -86,10 +86,8 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                         $term_slug = $term->slug;
                         // Si el slug del término en el bucle se encuentra en el array $post_terms del plato actual
                         if(array_search($term_slug,$post_terms) !== false){
-                            //echo '<h6>'.the_title().'</h6>';
-                            //echo implode(' ',$post_terms);
                             ?>
-                            <div class="col-md-6 mt-2 cwp-single-container"  role="button" >
+                            <div class="col-md-6 mt-2 cwp-single-container"  role="button" data-bs-toggle="modal" data-bs-target="#cwpModal">
                                 <div class="card cwp-mask"></div>
                                 <div class="card shadow-sm h-100 p-0">
                                     <div class="row g-0 h-100">
@@ -119,8 +117,13 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                                                             // De cada término cogemos el id del meta key 'alergeno-imagen'
                                                             $termId = get_term_meta( $term_alerg->term_id, 'alergeno-imagen', true );
                                                             // Con el id del campo cogemos la src de la imagen
-                                                            $iconImage = wp_get_attachment_image_src( $termId, 'thumbnails' );
-                                                            echo '<li class="list-inline-item"><img class="cwp-alerg-icon" src="' . $iconImage[0] . '" alt="' . $term->name . '"></li>';
+                                                            $iconImage = wp_get_attachment_image_src( $termId, 'thumbnail');
+                                                            if(empty($iconImage[0])){
+                                                                echo "<small class='cwp-alerg-sin-icon mx-1 badge bg-secondary'>$term_alerg->name</small>";
+                                                            } else {
+                                                                echo '<li class="list-inline-item"><img class="cwp-alerg-icon" src="' . $iconImage[0] . '" alt="' . $term_alerg->name . '"></li>';
+                                                            }
+
                                                         }
                                                         echo "</ul>";
                                                     }
