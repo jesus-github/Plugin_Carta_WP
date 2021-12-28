@@ -93,8 +93,8 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                                     <div class="row g-0 h-100">
                                         <!-- Si no hay imagen no mostramos su contenedor-->
                                         <?php if ( has_post_thumbnail( $post->ID ) ): ?>
-                                        <div class="col-4">
-                                            <img src="<?php the_post_thumbnail_url( 'medium' ); ?>" class="img-fluid rounded-start cwp-fill cwp-main-image" alt="...">
+                                        <!-- Recuperamos la imagen como tamaño 'thumbnail' para mostrarla como fondo del contenedor y la url del tamaño 'large' la almacenamos en el atributo src-large para mostrarla al hacer zoom -->
+                                        <div class="col-4 cwp-img-previa" style="background-image: url(<?php the_post_thumbnail_url('thumbnail'); ?>)" src-large="<?php the_post_thumbnail_url( 'large' ); ?>">
                                         </div>
                                         <div class="col-8">
                                             <?php else: ?>
