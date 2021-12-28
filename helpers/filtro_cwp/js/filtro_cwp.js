@@ -170,7 +170,7 @@ if (typeof  jQuery == 'undefined') {
             //console.log($alergenos_sin_icono);
             for (const $alergeno_sin_icono of $alergenos_sin_icono) {
                 console.log($alergeno_sin_icono.innerText)
-                $contenedor_zoom.find('ul.cwp-alergenos').append("<li class='list-inline-item text-danger my-1 fs-6'>"+$alergeno_sin_icono.innerText+"</li>");
+                $contenedor_zoom.find('ul.cwp-alergenos').append("<li class='list-inline-item my-1 badge bg-secondary'>"+$alergeno_sin_icono.innerText+"</li>");
             }
 
         });

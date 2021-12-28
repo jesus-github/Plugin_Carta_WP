@@ -119,7 +119,7 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                                                             // Con el id del campo cogemos la src de la imagen
                                                             $iconImage = wp_get_attachment_image_src( $termId, 'thumbnail');
                                                             if(empty($iconImage[0])){
-                                                                echo "<small class='cwp-alerg-sin-icon mx-1 text-danger'>$term_alerg->name</small>";
+                                                                echo "<small class='cwp-alerg-sin-icon mx-1 badge bg-secondary'>$term_alerg->name</small>";
                                                             } else {
                                                                 echo '<li class="list-inline-item"><img class="cwp-alerg-icon" src="' . $iconImage[0] . '" alt="' . $term_alerg->name . '"></li>';
                                                             }
