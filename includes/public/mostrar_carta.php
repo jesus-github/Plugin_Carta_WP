@@ -93,8 +93,8 @@ add_action( 'pre_get_posts', 'jmd_platos_devueltos', 1 );
                                     <div class="row g-0 h-100">
                                         <!-- Si no hay imagen no mostramos su contenedor-->
                                         <?php if ( has_post_thumbnail( $post->ID ) ): ?>
-                                        <div class="col-4">
-                                            <img src="<?php the_post_thumbnail_url( 'medium' ); ?>" class="img-fluid rounded-start cwp-fill cwp-main-image" alt="...">
+                                        <div class="col-4 img-previa" style="background-image: url(<?php the_post_thumbnail_url('thumbnail'); ?>)">
+                                            <img src="<?php the_post_thumbnail_url( 'large' ); ?>" class="rounded-start cwp-fill cwp-main-image d-none" alt="...">
                                         </div>
                                         <div class="col-8">
                                             <?php else: ?>

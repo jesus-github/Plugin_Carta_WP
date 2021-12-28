@@ -46,3 +46,7 @@ ul.cwp-categorias li.cwp-categoria-activa, ul.cwp-categorias li:hover {
 .cwp-mask:hover {
     opacity: 1;
 }
+
+.modal-body {
+    max-height: 60vh;
+}

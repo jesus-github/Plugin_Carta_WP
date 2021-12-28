@@ -13,14 +13,14 @@ if (typeof  jQuery == 'undefined') {
         this.options    = null;
         this.zoomfull       = '<!--  INICIO - Maquetación al pinchar sobre un item -->\n' +
             '<div class="modal fade" id="cwpModal" tabindex="-1" aria-hidden="true">\n' +
-            '   <div class="modal-dialog modal-dialog-centered">\n' +
+            '   <div class="modal-dialog modal-dialog-centered p-3">\n' +
             '       <div class="modal-content cwp-zoom shadow-lg border-0">\n' +
             '           <div class="modal-header bg-dark text-white border-0">\n' +
             '               <h3 class="modal-title card-title cwp-title" ></h3>\n' +
             '               <button type="button" class="btn-lg btn-close btn-close-white bg-transparent align-self-start ms-4" aria-label="Close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
             '           </div>\n' +
-            '           <div class="modal-body p-0">\n' +
-            '               <img src="" class="cwp-main-image" alt="...">\n' +
+            '           <div class="modal-body p-0 overflow-hidden">\n' +
+            '               <img src="" class="cwp-main-image w-100 h-auto" alt="...">\n' +
             '           </div>\n' +
             '           <div class="modal-footer justify-content-start">\n' +
             '               <p class="card-text text-secondary mb-2 cwp-description"></p>\n' +

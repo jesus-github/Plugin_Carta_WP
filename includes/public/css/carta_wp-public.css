@@ -1,4 +1,5 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file
- */
+
+.img-previa {
+    background-size: cover;
+    background-position: center;
+}
