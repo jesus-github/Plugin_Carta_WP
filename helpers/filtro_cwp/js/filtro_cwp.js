@@ -19,8 +19,8 @@ if (typeof  jQuery == 'undefined') {
             '               <h3 class="modal-title card-title cwp-title" ></h3>\n' +
             '               <button type="button" class="btn-lg btn-close btn-close-white bg-transparent align-self-start ms-4" aria-label="Close" data-bs-dismiss="modal" aria-label="Close"></button>\n' +
             '           </div>\n' +
-            '           <div class="modal-body p-0 overflow-hidden">\n' +
-            '               <img src="" class="cwp-main-image w-100 h-auto" alt="...">\n' +
+            '           <div class="modal-body p-0 overflow-hidden cwp-img-zoom">\n' +
+            // '               <img src="" class="cwp-main-image w-100 h-auto" alt="...">\n' +
             '           </div>\n' +
             '           <div class="modal-footer justify-content-start">\n' +
             '               <p class="card-text text-secondary mb-2 cwp-description"></p>\n' +
@@ -134,7 +134,7 @@ if (typeof  jQuery == 'undefined') {
             var $contenedor_pequeno = $(this);
             // Variables para almacenar los datos del contenedor pequeño:
             // Variable con la url de la imagen principal.
-            var $src = $contenedor_pequeno.find('.cwp-main-image').attr('src');
+            var $src = $contenedor_pequeno.find('.cwp-img-previa').attr('src-large');
             // Título
             var $titulo = $contenedor_pequeno.find('.card-title').text();
             // Descripcion. Vamos a distinguir si el contenedor tiene read-more o no para no mostrar lo que haya
@@ -156,7 +156,7 @@ if (typeof  jQuery == 'undefined') {
             // Controlamos que si no hay imagen no se muestre el contenedor de la imagen
             if (typeof $src != 'undefined'){
                 $('.modal-body').removeClass('d-none');
-                $contenedor_zoom.find('.cwp-main-image').attr('src', $src);
+                $contenedor_zoom.find('.cwp-img-zoom').attr('style','background-image: url('+$src+')');
             } else if (typeof $src === 'undefined'){
                 $contenedor_zoom.find('.cwp-main-image').attr('src', '');
                 $('.modal-body').addClass('d-none');
